@@ -1,0 +1,37 @@
+{
+  "homepage": {
+    "title": "Bienvenido a tu Starter Kit",
+    "description": "Diseñado con Tailwind CSS 4.1, con soporte para modo oscuro y localización.",
+    "cta": "Comenzar"
+  },
+  "language": "Español",
+  "metadata": {
+    "title": "Página principal del Starter Kit",
+    "description": "Un starter moderno de Next.js con Tailwind CSS e internacionalización."
+  },
+  "dashboard": {
+    "welcome": "Bienvenido al panel Administrativo",
+    "guestScreenshare": {
+      "title": "Compartir Pantalla del Invitado",
+      "streamId": "ID de Transmisión",
+      "link": "Enlace para Compartir Pantalla",
+      "copy": "Copiar Enlace",
+      "copied": "¡Copiado!",
+      "showQr": "Mostrar Código QR",
+      "obsLink": "Enlace OBS para Compartir Pantalla",
+      "copyObs": "Copiar Enlace OBS",
+      "preview": "Vista Previa de Pantalla"
+    },
+    "guestWebcam": {
+      "title": "Cámara Web del Invitado",
+      "streamId": "ID de Transmisión",
+      "link": "Enlace de Cámara Web",
+      "copy": "Copiar Enlace",
+      "copied": "¡Copiado!",
+      "showQr": "Mostrar Código QR",
+      "obsLink": "Enlace OBS de Cámara Web",
+      "copyObs": "Copiar Enlace OBS",
+      "preview": "Vista Previa de Cámara Web"
+    }
+  }
+}

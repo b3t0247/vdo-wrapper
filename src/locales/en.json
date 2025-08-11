@@ -1,0 +1,37 @@
+{
+  "homepage": {
+    "title": "Welcome to Your Starter Kit",
+    "description": "Styled with Tailwind CSS 4.1, supporting dark mode and localization.",
+    "cta": "Get Started"
+  },
+  "language": "English",
+  "metadata": {
+    "title": "Starter Kit Homepage",
+    "description": "A modern Next.js starter with Tailwind CSS and i18n."
+  },
+  "dashboard": {
+    "welcome": "Welcome to the Admin Dashboard",
+    "guestScreenshare": {
+      "title": "Guest Screenshare",
+      "streamId": "Stream ID",
+      "link": "Screenshare Link",
+      "copy": "Copy Link",
+      "copied": "Copied!",
+      "showQr": "Show QR Code",
+      "obsLink": "OBS Screenshare Link",
+      "copyObs": "Copy OBS Link",
+      "preview": "Screenshare Preview"
+    },
+    "guestWebcam": {
+      "title": "Guest Webcam",
+      "streamId": "Stream ID",
+      "link": "Webcam Link",
+      "copy": "Copy Link",
+      "copied": "Copied!",
+      "showQr": "Show QR Code",
+      "obsLink": "OBS Webcam Link",
+      "copyObs": "Copy OBS Link",
+      "preview": "Webcam Preview"
+    }
+  }
+}
