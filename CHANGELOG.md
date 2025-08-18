@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.1.1 (August 17, 2025)
+
+### fix
+
+- fix(deploy): temporarily disable auth routes to resolve Vercel build errors ([fcd3052](https://github.com/b3t0247/vdo-wrapper/commit/fcd3052))
+
 ## 0.1.0 (August 17, 2025)
 
 ### feat
