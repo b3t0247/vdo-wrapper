@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { getPushUrl, getViewUrl } from "@/lib/vdoConfig";
 import { useClipboard } from "@/lib/useClipboard";
+import { useSession } from "next-auth/react";
 
 const screenshareOptions = [
   "screenshare",
@@ -15,6 +16,8 @@ const screenshareOptions = [
 const webcamOptions = ["webcam", "cleanoutput"];
 
 export default function DashboardPage() {
+  const { data: session } = useSession();
+
   const t = useTranslations("dashboard");
   const [screenId, setScreenId] = useState("projector");
   const [camera1Id, setcamera1Id] = useState("camera1");
@@ -40,6 +43,11 @@ export default function DashboardPage() {
 
   return (
     <main className="p-6">
+      <div>
+        <h1 className="pb-4 font-medium text-green-600">
+          {t("greeting")}, {session?.user?.name}!
+        </h1>
+      </div>
       <div className="mx-auto w-full max-w-6xl space-y-6 px-4">
         <h1 className="text-foreground text-center text-2xl font-bold">
           {t("welcome")}

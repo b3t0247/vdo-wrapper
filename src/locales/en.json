@@ -1,15 +1,20 @@
 {
   "homepage": {
-    "title": "Welcome to Your Starter Kit",
-    "description": "Styled with Tailwind CSS 4.1, supporting dark mode and localization.",
-    "cta": "Get Started"
+    "title": "Welcome to VDO Wrapper",
+    "description": "A streamlined video interface with screenshare and webcam support. OBS-ready and guest-friendly.",
+    "cta": "Dashboard",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "welcome": "Welcome"
   },
   "language": "English",
   "metadata": {
-    "title": "Starter Kit Homepage",
-    "description": "A modern Next.js starter with Tailwind CSS and i18n."
+    "title": "VDO Wrapper Dashboard",
+    "description": "A streamlined video dashboard for screenshare and webcam links. OBS-compatible, guest-friendly, and built for expansion."
   },
   "dashboard": {
+    "greeting": "Hi",
     "welcome": "Welcome to the Admin Dashboard",
     "guestScreenshare": {
       "title": "Guest Screenshare",

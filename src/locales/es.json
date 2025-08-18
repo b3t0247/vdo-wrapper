@@ -1,15 +1,20 @@
 {
   "homepage": {
-    "title": "Bienvenido a tu Starter Kit",
-    "description": "Diseñado con Tailwind CSS 4.1, con soporte para modo oscuro y localización.",
-    "cta": "Comenzar"
+    "title": "Bienvenido a VDO Wrapper",
+    "description": "Una interfaz de video optimizada con soporte para compartir pantalla y cámara web. Compatible con OBS y fácil para invitados.",
+    "cta": "Panel",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión",
+    "welcome": "Bienvenido"
   },
   "language": "Español",
   "metadata": {
-    "title": "Página principal del Starter Kit",
-    "description": "Un starter moderno de Next.js con Tailwind CSS e internacionalización."
+    "title": "Panel de VDO Wrapper",
+    "description": "Un panel de video optimizado para compartir pantalla y cámara web. Compatible con OBS, fácil para invitados y diseñado para crecer."
   },
   "dashboard": {
+    "greeting": "Hola",
     "welcome": "Bienvenido al panel Administrativo",
     "guestScreenshare": {
       "title": "Compartir Pantalla del Invitado",

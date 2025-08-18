@@ -6,7 +6,7 @@ const buildLintCommand = (files) => {
       !f.endsWith("eslint.config.mjs") &&
       !f.endsWith("prettier.config.mjs") &&
       !f.endsWith(".lintstagedrc.mjs") &&
-      !f.endsWith(".release-it.ts") // Let fallback handle this one separately
+      !f.endsWith(".release-it.ts"), // Let fallback handle this one separately
   );
 
   if (filtered.length === 0) return [];
