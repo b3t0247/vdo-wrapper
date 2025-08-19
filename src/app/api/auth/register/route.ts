@@ -1,4 +1,4 @@
-// import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 // import bcrypt from "bcryptjs";
 // import { prisma } from "@/lib/db"; // adjust to your DB client
 
@@ -26,3 +26,15 @@
 
 //   return NextResponse.json({ message: "User registered", user });
 // }
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  const { email } = body;
+
+  // Placeholder logic for user registration
+  console.log(`Registering user: ${email}`);
+
+  return NextResponse.json({
+    message: "User registration placeholder successful",
+  });
+}

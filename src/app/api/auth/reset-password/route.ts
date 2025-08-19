@@ -1,4 +1,4 @@
-// import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 // import bcrypt from "bcryptjs";
 // import { prisma } from "@/lib/db";
 
@@ -27,3 +27,15 @@
 
 //   return NextResponse.json({ message: "Password updated" });
 // }
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  const { token } = body;
+
+  // Placeholder logic for password reset
+  console.log(`Resetting password with token: ${token}`);
+
+  return NextResponse.json({
+    message: "Password reset placeholder successful",
+  });
+}

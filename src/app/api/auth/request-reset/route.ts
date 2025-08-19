@@ -1,4 +1,4 @@
-// import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 // import { prisma } from "@/lib/db";
 // import crypto from "crypto";
 
@@ -28,3 +28,14 @@
 
 //   return NextResponse.json({ message: "Reset link sent" });
 // }
+
+export async function POST(request: Request) {
+  // Placeholder logic for password reset request
+  const body = await request.json();
+  const email = body?.email;
+
+  // You can add email validation and token generation here later
+  console.log(`Password reset requested for: ${email}`);
+
+  return NextResponse.json({ message: "Reset link sent (placeholder)" });
+}
