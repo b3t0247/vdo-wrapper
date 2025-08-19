@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.1.2 (August 18, 2025)
+
+### fix
+
+- fix(deploy): re-enable auth routes and refactor fonts to fix Vercel build ([f96cde8](https://github.com/b3t0247/vdo-wrapper/commit/f96cde8))
+
 ## 0.1.1 (August 17, 2025)
 
 ### fix
