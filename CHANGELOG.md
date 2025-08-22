@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.3.0 (August 21, 2025)
+
+### feat
+
+- feat(i18n): statically import translation files for en/es ([f8ac29d](https://github.com/b3t0247/vdo-wrapper/commit/f8ac29d))
+
 ## 0.2.0 (August 21, 2025)
 
 ### feat
