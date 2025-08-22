@@ -1,43 +1,48 @@
-// import { readFile } from "fs/promises";
+// import { readdir, readFile } from "fs/promises";
 // import path from "path";
 
 // export async function getMessages(locale: string) {
-//   const home = await readFile(
-//     path.join(process.cwd(), "src/messages", locale, "home.json"),
-//     "utf8",
-//   );
-//   const dashboard = await readFile(
-//     path.join(process.cwd(), "src/messages", locale, "dashboard.json"),
-//     "utf8",
-//   );
-//   const common = await readFile(
-//     path.join(process.cwd(), "src/messages", locale, "common.json"),
-//     "utf8",
-//   );
+//   const messagesDir = path.join(process.cwd(), "src/messages", locale);
+//   const files = await readdir(messagesDir);
 
-//   return {
-//     home: JSON.parse(home),
-//     dashboard: JSON.parse(dashboard),
-//     common: JSON.parse(common),
-//   };
+//   const messages: Record<string, unknown> = {};
+
+//   for (const file of files) {
+//     if (file.endsWith(".json")) {
+//       const namespace = path.basename(file, ".json");
+//       const content = await readFile(path.join(messagesDir, file), "utf8");
+//       messages[namespace] = JSON.parse(content);
+//     }
+//   }
+
+//   return messages;
 // }
 
-import { readdir, readFile } from "fs/promises";
-import path from "path";
+import common_en from "@/messages/en/common.json";
+import dashboard_en from "@/messages/en/dashboard.json";
+import home_en from "@/messages/en/home.json";
+import manual_en from "@/messages/en/manual.json";
 
-export async function getMessages(locale: string) {
-  const messagesDir = path.join(process.cwd(), "src/messages", locale);
-  const files = await readdir(messagesDir);
+import common_es from "@/messages/es/common.json";
+import dashboard_es from "@/messages/es/dashboard.json";
+import home_es from "@/messages/es/home.json";
+import manual_es from "@/messages/es/manual.json";
 
-  const messages: Record<string, unknown> = {};
+const translations = {
+  en: {
+    common: common_en,
+    dashboard: dashboard_en,
+    home: home_en,
+    manual: manual_en,
+  },
+  es: {
+    common: common_es,
+    dashboard: dashboard_es,
+    home: home_es,
+    manual: manual_es,
+  },
+} as const;
 
-  for (const file of files) {
-    if (file.endsWith(".json")) {
-      const namespace = path.basename(file, ".json");
-      const content = await readFile(path.join(messagesDir, file), "utf8");
-      messages[namespace] = JSON.parse(content);
-    }
-  }
-
-  return messages;
+export function getMessages(locale: keyof typeof translations) {
+  return translations[locale] ?? translations["en"];
 }
