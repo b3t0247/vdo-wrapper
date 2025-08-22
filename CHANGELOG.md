@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.2.0 (August 21, 2025)
+
+### feat
+
+- feat(i18n): restructure locale layout and add MDX support ([56172d3](https://github.com/b3t0247/vdo-wrapper/commit/56172d3))
+
 ## 0.1.2 (August 18, 2025)
 
 ### fix
