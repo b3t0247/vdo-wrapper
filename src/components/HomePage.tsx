@@ -9,7 +9,7 @@ import { signOut, useSession } from "next-auth/react";
 
 export default function HomePage() {
   const locale = useLocale();
-  const t = useTranslations("homepage");
+  const t = useTranslations("home.homepage");
   const { data: session, status } = useSession();
 
   const isLoggedIn = status === "authenticated";
@@ -24,16 +24,6 @@ export default function HomePage() {
       </div>
 
       <p className="text-muted-foreground max-w-xl">{t("description")}</p>
-
-      {/* <a
-        href="https://github.com/b3t0247/nextjs-tailwind/tree/main?tab=readme-ov-file#%EF%B8%8F-getting-started"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button className="rounded-md bg-blue-600 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-blue-700 hover:shadow-lg focus:ring-2 focus:ring-blue-300 focus:outline-none dark:bg-blue-400 dark:text-gray-900 dark:hover:bg-blue-500 dark:focus:ring-blue-600">
-          {t("cta")}
-        </Button>
-      </a> */}
 
       <Link href={`/${locale}/dashboard`}>
         <Button className="rounded-md bg-blue-600 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-blue-700 hover:shadow-lg focus:ring-2 focus:ring-blue-300 focus:outline-none dark:bg-blue-400 dark:text-gray-900 dark:hover:bg-blue-500 dark:focus:ring-blue-600">

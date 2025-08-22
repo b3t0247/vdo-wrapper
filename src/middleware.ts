@@ -1,31 +1,31 @@
-import createMiddleware from "next-intl/middleware";
-import { routing } from "@/i18n/routing";
 import { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "@/i18n/routing";
 
-// Define public paths that don't require authentication
+// Paths that don't require authentication
 const PUBLIC_PATHS = ["/", "/login", "/register"];
 
-function isPublicPath(pathname: string) {
-  // Extract subpath from locale-aware routes like /en/login or /es/register
+/**
+ * Checks if the current pathname matches a public route.
+ * Supports locale-prefixed paths like /en/login or /es/register.
+ */
+function isPublicPath(pathname: string): boolean {
   const localeAwareRegex = /^\/([a-z]{2}(?:-[A-Z]{2})?)?(\/.*)?$/;
   const match = pathname.match(localeAwareRegex);
-  const subPath = match?.[2] || "/"; // Use match[2] to get the actual subpath
-
-  // Check if the subpath is in the list of public paths
+  const subPath = match?.[2] || "/";
   return PUBLIC_PATHS.includes(subPath);
 }
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip authenticaion for public paths
+  // Allow access to public paths without authentication
   if (isPublicPath(pathname)) {
     return createMiddleware(routing)(request);
   }
 
-  // Retrive session token form cookies
-  // const token = await getToken({ req: request });
+  // Check for a valid session token
   const token = await getToken({
     req: request,
     secret: process.env.AUTH_SECRET,
@@ -34,17 +34,15 @@ export default async function middleware(request: NextRequest) {
   const isAuth = !!token;
 
   if (!isAuth) {
-    // Redirect unauthenticaed users to locale-aware login page
-    // Preserve original destination using callbackUrl
-    const locale = pathname.split("/")[1]; // e.g. 'en'
+    // Redirect unauthenticated users to locale-aware login page
+    const locale = pathname.split("/")[1] ?? routing.defaultLocale;
     const redirectUrl = new URL(`/${locale}/login`, request.url);
     redirectUrl.searchParams.set("callbackUrl", request.nextUrl.pathname);
 
-    // return Response.redirect(new URL("/login", request.url));
     return Response.redirect(redirectUrl);
   }
 
-  // Run next-intl middleware for locale handling
+  // Apply next-intl middleware for locale routing
   return createMiddleware(routing)(request);
 }
 
@@ -55,10 +53,9 @@ export const config = {
     // - those containing a dot (e.g. `favicon.ico`)
     "/((?!api|_next|_vercel|static|favicon.ico).*)",
 
-    // Match all pathnames within `{/:locale}/users`
-    "/([\\w-]+)?/users/(.+)",
-
-    "/dashboard/:path*",
-    "/room/:path*",
+    // Locale-aware protected routes
+    "/([\\w-]+)?/dashboard/:path*",
+    "/([\\w-]+)?/room/:path*",
+    "/([\\w-]+)?/users/:path*",
   ],
 };

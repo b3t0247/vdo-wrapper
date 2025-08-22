@@ -15,7 +15,7 @@ export default function LanguageSwitcher() {
   // const router = useRouter();
   const pathname = usePathname();
   const activeLocale = useLocale();
-  const t = useTranslations();
+  const t = useTranslations("common");
 
   const stripLocaleFromPath = (path: string) => path.replace(/^\/(en|es)/, "");
   return (

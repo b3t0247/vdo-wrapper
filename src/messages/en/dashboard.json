@@ -1,18 +1,4 @@
 {
-  "homepage": {
-    "title": "Welcome to VDO Wrapper",
-    "description": "A streamlined video interface with screenshare and webcam support. OBS-ready and guest-friendly.",
-    "cta": "Dashboard",
-    "login": "Login",
-    "register": "Register",
-    "logout": "Logout",
-    "welcome": "Welcome"
-  },
-  "language": "English",
-  "metadata": {
-    "title": "VDO Wrapper Dashboard",
-    "description": "A streamlined video dashboard for screenshare and webcam links. OBS-compatible, guest-friendly, and built for expansion."
-  },
   "dashboard": {
     "greeting": "Hi",
     "welcome": "Welcome to the Admin Dashboard",
