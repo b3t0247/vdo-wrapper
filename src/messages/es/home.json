@@ -1,0 +1,11 @@
+{
+  "homepage": {
+    "title": "Bienvenido a VDO Wrapper",
+    "description": "Una interfaz de video optimizada con soporte para pantalla compartida y cámara web. Preparado para OBS y fácil de usar para invitados.",
+    "cta": "Panel",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión",
+    "welcome": "Bienvenido"
+  }
+}

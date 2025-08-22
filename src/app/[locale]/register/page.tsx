@@ -38,10 +38,8 @@ export default function RegisterPage() {
             className="border-border bg-input text-foreground mt-1 w-full rounded border px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
           <PasswordField
-            // type="password"
             placeholder="Password"
             value={password}
-            // onChange={(e) => setPassword(e.target.value)}
             onChange={setPassword}
             className="border-border bg-input text-foreground mt-1 w-full rounded border px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />

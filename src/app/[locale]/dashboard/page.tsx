@@ -18,7 +18,7 @@ const webcamOptions = ["webcam", "cleanoutput"];
 export default function DashboardPage() {
   const { data: session } = useSession();
 
-  const t = useTranslations("dashboard");
+  const t = useTranslations("dashboard.dashboard");
   const [screenId, setScreenId] = useState("projector");
   const [camera1Id, setcamera1Id] = useState("camera1");
 

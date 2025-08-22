@@ -1,0 +1,11 @@
+{
+  "homepage": {
+    "title": "Welcome to VDO Wrapper",
+    "description": "A streamlined video interface with screenshare and webcam support. OBS-ready and guest-friendly.",
+    "cta": "Dashboard",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "welcome": "Welcome"
+  }
+}
