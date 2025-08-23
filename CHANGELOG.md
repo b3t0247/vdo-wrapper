@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.4.0 (August 22, 2025)
+
+### feat
+
+- feat(nav): add responsive NavBar with locale-aware routing ([744ade6](https://github.com/b3t0247/vdo-wrapper/commit/744ade6))
+
 ## 0.3.0 (August 21, 2025)
 
 ### feat
