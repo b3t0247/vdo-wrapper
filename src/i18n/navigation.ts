@@ -7,3 +7,11 @@ export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
 
 export const localePrefix = "always";
+
+export const navigation = [
+  { label: "Home", path: "/" },
+  { label: "Dashboard", path: "/dashboard" },
+  { label: "Manual", path: "/manual" },
+  { label: "Room", path: "/room/test" },
+  // { label: "Login", path: "/login" },
+];

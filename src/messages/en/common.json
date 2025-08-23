@@ -3,5 +3,12 @@
   "metadata": {
     "title": "Welcome to VDO",
     "description": "Your multilingual video platform"
+  },
+  "nav": {
+    "Home": "Home",
+    "Dashboard": "Dashboard",
+    "Manual": "Manual",
+    "Room": "Chat Room",
+    "Login": "Login"
   }
 }

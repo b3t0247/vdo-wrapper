@@ -6,7 +6,7 @@ import { getLocale } from "next-intl/server";
 export default async function RoomPage() {
   const locale = await getLocale();
   const vdoLang = getVdoLanguage(locale);
-  const vdoUrl = `https://vdo.ninja/?room=${locale}&language=${vdoLang}`;
+  const vdoUrl = `https://vdo.ninja/?room=${locale}&language=${vdoLang}&cleanoutput`;
 
   return (
     <main className="flex h-screen flex-col items-center justify-center">

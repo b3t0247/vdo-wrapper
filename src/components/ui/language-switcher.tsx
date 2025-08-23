@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
 } from "@radix-ui/react-dropdown-menu";
 import { usePathname } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { locales } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 
@@ -15,14 +15,16 @@ export default function LanguageSwitcher() {
   // const router = useRouter();
   const pathname = usePathname();
   const activeLocale = useLocale();
-  const t = useTranslations("common");
+  // const t = useTranslations("common");
 
   const stripLocaleFromPath = (path: string) => path.replace(/^\/(en|es)/, "");
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" aria-label="Switch language">
-          🌐 {t("language")} - {activeLocale.toUpperCase()}
+          {/* 🌐 {t("language")} - {activeLocale.toUpperCase()} */}
+          🌐
+          <div>{activeLocale.toUpperCase()}</div>
         </Button>
       </DropdownMenuTrigger>
 

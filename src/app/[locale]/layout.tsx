@@ -4,6 +4,7 @@ import { getMessages } from "@/lib/getMessages";
 import LanguageSwitcher from "@/components/ui/language-switcher";
 import { ModeToggle } from "@/components/theme-toggle";
 import { NextIntlClientProvider } from "next-intl";
+import NavBar from "@/components/NavBar";
 
 type Messages = {
   common?: {
@@ -53,10 +54,13 @@ export default async function LocaleLayout({
       locale={locale}
       timeZone="America/Los_Angeles"
     >
-      <header className="flex items-center justify-between border-b p-4">
+      <header className="flex items-center justify-between border-b p-2">
         <LanguageSwitcher />
         <ModeToggle />
       </header>
+      <div className="flex items-center justify-center border-b p-1">
+        <NavBar />
+      </div>
       <main>{children}</main>
     </NextIntlClientProvider>
   );
