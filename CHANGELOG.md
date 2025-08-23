@@ -10,6 +10,13 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.4.2 (August 22, 2025)
+
+### fix
+
+- fix(auth): ensure password is string before verification and add @types/bcrypt for auth validation ([bb83aeb](https://github.com/b3t0247/vdo-wrapper/commit/bb83aeb))
+- fix(dashboard): remove '-' from webcam link to prevent URL issues ([eeac47b](https://github.com/b3t0247/vdo-wrapper/commit/eeac47b))
+
 ## 0.4.1 (August 22, 2025)
 
 ### fix
