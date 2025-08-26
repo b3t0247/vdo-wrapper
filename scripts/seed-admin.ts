@@ -1,6 +1,8 @@
 import { prisma } from "../src/lib/prisma";
-
 import bcrypt from "bcryptjs";
+import promptSync from "prompt-sync";
+
+const prompt = promptSync({ sigint: true });
 
 async function seedAdmin() {
   const existing = await prisma.user.findUnique({
@@ -11,7 +13,22 @@ async function seedAdmin() {
     return;
   }
 
-  const hashedPassword = await bcrypt.hash("password", 10);
+  console.log("🔐 Create Admin Password");
+
+  const password = prompt("Enter new password: ", { echo: "*" });
+  const confirm = prompt("Confirm new password: ", { echo: "*" });
+
+  if (!password || !confirm) {
+    console.error("❌ Password cannot be empty.");
+    process.exit(1);
+  }
+
+  if (password !== confirm) {
+    console.error("❌ Passwords do not match.");
+    process.exit(1);
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   await prisma.user.create({
     data: {
@@ -26,6 +43,6 @@ async function seedAdmin() {
 }
 
 seedAdmin().catch((err) => {
-  console.error("❌ Error seeding admin:", err);
+  console.error("❌ Error updating password:", err);
   process.exit(1);
 });
