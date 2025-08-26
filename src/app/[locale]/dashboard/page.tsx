@@ -37,9 +37,9 @@ export default function DashboardPage() {
   }, [screenId]);
 
   const guestScreenshareLink = getPushUrl(screenId, screenshareOptions);
-  const guestWebcamLink = getPushUrl(`${screenId}-cam`, webcamOptions);
+  const guestWebcamLink = getPushUrl(`${screenId}Cam`, webcamOptions);
   const obsScreenshareLink = getViewUrl(screenId, screenshareOptions);
-  const obsWebcamLink = getViewUrl(`${screenId}-cam`, webcamOptions);
+  const obsWebcamLink = getViewUrl(`${screenId}Cam`, webcamOptions);
 
   return (
     <main className="p-6">

@@ -2,3 +2,7 @@ onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - sharp
   - unrs-resolver
+  - bcrypt
+  - prisma
+  - '@prisma/client'
+  - '@prisma/engines'
