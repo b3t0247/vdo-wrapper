@@ -10,6 +10,16 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.6.0 (August 25, 2025)
+
+### feat
+
+- feat(db): add initial Prisma migration and update admin seed script ([d5bb5cf](https://github.com/b3t0247/vdo-wrapper/commit/d5bb5cf))
+
+### chore
+
+- chore(config): exclude Prisma client from linting and type checking ([4c62c49](https://github.com/b3t0247/vdo-wrapper/commit/4c62c49))
+
 ## 0.5.0 (August 25, 2025)
 
 ### feat
