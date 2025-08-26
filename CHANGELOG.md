@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.5.0 (August 25, 2025)
+
+### feat
+
+- feat(auth): implement secure Prisma-based login with bcrypt and seed script ([87609a8](https://github.com/b3t0247/vdo-wrapper/commit/87609a8))
+
 ## 0.4.0 (August 22, 2025)
 
 ### feat
