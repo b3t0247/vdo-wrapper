@@ -85,5 +85,9 @@ export default defineConfig([
   },
 
   // Global Ignore Using Flat Config API
-  globalIgnores([".lintstagedrc.mjs", "postcss.config.mjs"]),
+  globalIgnores([
+    ".lintstagedrc.mjs",
+    "postcss.config.mjs",
+    "src/generated/prisma",
+  ]),
 ]);

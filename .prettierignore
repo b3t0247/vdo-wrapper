@@ -17,3 +17,6 @@ public/**/*
 
 # Generated files
 components.json
+
+# Prisma client output
+src/generated/prisma
