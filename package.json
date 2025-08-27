@@ -15,7 +15,7 @@
     "format": "prettier --write .",
     "prepare": "husky",
     "release": "release-it --config=.release-it.ts",
-    "seed:admin": "tsx scripts/seed-admin.ts",
+    "seed:admin": "tsx prisma/seed/admin.ts",
     "postinstall": "prisma generate"
   },
   "dependencies": {

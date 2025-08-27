@@ -45,4 +45,4 @@ package-lock.json
 yarn.lock
 bun.lockb
 
-/src/generated/prisma
+/prisma/generated

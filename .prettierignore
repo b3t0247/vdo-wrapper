@@ -19,4 +19,4 @@ public/**/*
 components.json
 
 # Prisma client output
-src/generated/prisma
+prisma/generated/

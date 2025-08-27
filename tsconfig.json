@@ -26,7 +26,8 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["components/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/prisma": ["../prisma/generated"]
     }
   },
   "include": [
@@ -35,5 +36,5 @@
     "src/**/*.tsx",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "src/generated/prisma"]
+  "exclude": ["node_modules"]
 }
