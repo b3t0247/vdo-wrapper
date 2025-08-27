@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.6.1 (August 26, 2025)
+
+### fix
+
+- fix(auth): restructure Prisma setup to eliminate callback error in production ([615a8e5](https://github.com/b3t0247/vdo-wrapper/commit/615a8e5))
+
 ## 0.6.0 (August 25, 2025)
 
 ### feat
