@@ -3,12 +3,14 @@ import { getToken } from "next-auth/jwt";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "@/i18n/routing";
 
-// Paths that don't require authentication
+// Public routes that bypass authentication checks.
+// These are matched after locale extraction (e.g. /en/login → /login).
 const PUBLIC_PATHS = ["/", "/login", "/register"];
 
 /**
- * Checks if the current pathname matches a public route.
+ * Determines if the current pathname matches a public route.
  * Supports locale-prefixed paths like /en/login or /es/register.
+ * Extracts the subpath (e.g. "/login") for comparison against PUBLIC_PATHS.
  */
 function isPublicPath(pathname: string): boolean {
   const localeAwareRegex = /^\/([a-z]{2}(?:-[A-Z]{2})?)?(\/.*)?$/;
@@ -25,10 +27,12 @@ export default async function middleware(request: NextRequest) {
     return createMiddleware(routing)(request);
   }
 
-  // Check for a valid session token
+  // Attempt to retrieve the session token from cookies.
+  // `secureCookie: true` ensures compatibility with HTTPS-only environments like Vercel.
   const token = await getToken({
     req: request,
     secret: process.env.AUTH_SECRET,
+    secureCookie: true,
   });
 
   const isAuth = !!token;
@@ -48,12 +52,13 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all pathnames except:
-    // - those starting with `/api`, `/trpc`, `/_next`, or `/_vercel`
-    // - those containing a dot (e.g. `favicon.ico`)
+    // Match all routes except:
+    // - API endpoints (`/api`, `/trpc`)
+    // - Static assets (`/_next`, `/_vercel`, `favicon.ico`)
+    // - Any file-like paths (e.g. `.svg`, `.js`)
     "/((?!api|_next|_vercel|static|favicon.ico).*)",
 
-    // Locale-aware protected routes
+    // Protect locale-aware routes that require authentication
     "/([\\w-]+)?/dashboard/:path*",
     "/([\\w-]+)?/room/:path*",
     "/([\\w-]+)?/users/:path*",

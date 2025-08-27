@@ -49,6 +49,19 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   session: {
     strategy: "jwt",
   },
+  // Configure cookie behavior for production environments.
+  // Ensures session token is readable by edge middleware and secure over HTTPS.
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+  },
 
   // Optional: Custom pages
   // pages: {
