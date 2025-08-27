@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.6.2 (August 26, 2025)
+
+### fix
+
+- fix(auth): ensure session persistence on Vercel by configuring secure cookies and edge middleware ([d9349e6](https://github.com/b3t0247/vdo-wrapper/commit/d9349e6))
+
 ## 0.6.1 (August 26, 2025)
 
 ### fix
