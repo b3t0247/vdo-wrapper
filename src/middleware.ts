@@ -19,8 +19,49 @@ function isPublicPath(pathname: string): boolean {
   return PUBLIC_PATHS.includes(subPath);
 }
 
+/**
+ * Type guard to ensure a string is a valid locale.
+ * Prevents TypeScript errors when comparing cookie or browser values.
+ */
+function isValidLocale(
+  locale: string,
+): locale is (typeof routing.locales)[number] {
+  return (routing.locales as readonly string[]).includes(locale);
+}
+
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  /**
+   * Locale persistence enhancement:
+   * If the current pathname does not include a locale prefix (e.g. /en or /es),
+   * attempt to read the user's preferred locale from cookies.
+   * If not found, fall back to browser language via Accept-Language header.
+   * Redirect to the locale-prefixed version of the current path.
+   */
+  const localePrefixRegex = /^\/(en|es)(\/|$)/;
+  const hasLocalePrefix = localePrefixRegex.test(pathname);
+
+  if (!hasLocalePrefix) {
+    const cookieLocale = request.cookies.get("preferredLocale")?.value;
+    const browserLocale = request.headers
+      .get("accept-language")
+      ?.split(",")[0]
+      ?.split("-")[0]
+      ?.toLowerCase();
+
+    let resolvedLocale: (typeof routing.locales)[number] =
+      routing.defaultLocale;
+
+    if (cookieLocale && isValidLocale(cookieLocale)) {
+      resolvedLocale = cookieLocale;
+    } else if (browserLocale && isValidLocale(browserLocale)) {
+      resolvedLocale = browserLocale;
+    }
+
+    const redirectUrl = new URL(`/${resolvedLocale}${pathname}`, request.url);
+    return Response.redirect(redirectUrl);
+  }
 
   // Allow access to public paths without authentication
   if (isPublicPath(pathname)) {
@@ -40,15 +81,16 @@ export default async function middleware(request: NextRequest) {
   });
 
   // Development-only logging for debugging session token
-  if (process.env.NODE_ENV !== "production") {
-    console.log(
-      "[Middleware] Session token cookie:",
-      request.cookies.get("next-auth.session-token"),
-    );
-    console.log("[Middleware] Decoded token:", token);
-  }
+  // if (process.env.NODE_ENV !== "production") {
+  //   console.log(
+  //     "[Middleware] Session token cookie:",
+  //     request.cookies.get("next-auth.session-token"),
+  //   );
+  //   console.log("[Middleware] Decoded token:", token);
+  // }
   // console.log("Cookies:", request.cookies.getAll());
   // console.log("AUTH_SECRET:", process.env.AUTH_SECRET);
+
   const isAuth = !!token;
 
   if (!isAuth) {

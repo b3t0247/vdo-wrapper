@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getMessages } from "@/lib/getMessages";
-import LanguageSwitcher from "@/components/ui/language-switcher";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { NextIntlClientProvider } from "next-intl";
 import NavBar from "@/components/NavBar";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 type Messages = {
   common?: {

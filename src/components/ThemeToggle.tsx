@@ -15,7 +15,7 @@ export function ThemeToggle() {
   };
 
   return (
-    <Button variant="outline" size="icon" onClick={toggleTheme}>
+    <Button variant="ghost" size="icon" onClick={toggleTheme}>
       <Sun
         className="h-[1.2rem] w-[1.2rem] transition-all dark:hidden"
         aria-hidden="true"
