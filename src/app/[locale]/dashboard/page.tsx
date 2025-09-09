@@ -16,9 +16,9 @@ const screenshareOptions = [
 const webcamOptions = ["webcam", "cleanoutput"];
 
 export default function DashboardPage() {
-  const { data: session } = useSession();
-
+  const { data: session, status } = useSession();
   const t = useTranslations("dashboard.dashboard");
+
   const [screenId, setScreenId] = useState("projector");
   const [camera1Id, setcamera1Id] = useState("camera1");
 
@@ -36,6 +36,19 @@ export default function DashboardPage() {
     localStorage.setItem("screenId", screenId);
   }, [screenId]);
 
+  // Session guard
+  if (status === "loading") {
+    return <main className="p-6">Loading session...</main>;
+  }
+
+  if (!session) {
+    return (
+      <main className="p-6 text-red-600">
+        Access denied. You are not logged in.
+      </main>
+    );
+  }
+
   const guestScreenshareLink = getPushUrl(screenId, screenshareOptions);
   const guestWebcamLink = getPushUrl(`${screenId}Cam`, webcamOptions);
   const obsScreenshareLink = getViewUrl(screenId, screenshareOptions);
@@ -43,6 +56,7 @@ export default function DashboardPage() {
 
   return (
     <main className="p-6">
+      <div>Dashboard loaded</div>
       <div>
         <h1 className="pb-4 font-medium text-green-600">
           {t("greeting")}, {session?.user?.name}!

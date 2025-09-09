@@ -4,7 +4,6 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Form from "next/form";
 import PasswordField from "@/components/ui/password-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,24 +12,39 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
 
+  // State for credentials
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState("");
 
+  // Loading state to prevent double submission
+  const [loading, setLoading] = useState(false);
+
   const handleLogin = async () => {
+    setLoading(true);
+
     const result = await signIn("credentials", {
       username,
       password,
       redirect: false,
+      callbackUrl, // Ensures proper redirect after login
     });
+
+    setLoading(false);
 
     if (result?.error) {
       setError("Login failed: " + result.error);
     } else {
-      window.location.href = callbackUrl;
+      // window.location.href = callbackUrl;
+      // Wait briefly to ensure cookie is written
+      setTimeout(() => {
+        window.location.href = callbackUrl;
+      }, 250);
     }
   };
 
+  // Handle social login
   const handleSocialLogin = async (provider: string) => {
     await signIn(provider, { callbackUrl });
   };
@@ -42,19 +56,27 @@ export default function LoginPage() {
           Sign In
         </h2>
 
+        {/* ⚠️ Error message display */}
         {error && (
           <div className="mb-4 rounded bg-red-100 px-4 py-2 text-sm text-red-700">
             {error}
           </div>
         )}
 
-        <Form action={handleLogin}>
+        {/* ✅ Correct form submission using onSubmit */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleLogin();
+          }}
+        >
           <div className="space-y-4">
             <div>
               <label className="text-foreground block text-sm font-medium">
                 Username
               </label>
               <Input
+                name="username"
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -68,6 +90,7 @@ export default function LoginPage() {
                 Password
               </label>
               <PasswordField
+                name="password"
                 value={password}
                 onChange={setPassword}
                 placeholder="Password"
@@ -85,14 +108,17 @@ export default function LoginPage() {
               </Link>
             </div>
 
+            {/* Button disables while loading */}
             <Button
               type="submit"
+              disabled={loading}
               className="w-full rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
             >
-              Sign In
+              {/* Sign In */}
+              {loading ? "Signing In..." : "Sign In"}
             </Button>
           </div>
-        </Form>
+        </form>
 
         <div className="mt-6 border-t pt-4 text-center">
           <p className="text-muted-foreground mb-2 text-sm">Or sign in with</p>

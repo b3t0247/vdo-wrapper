@@ -33,8 +33,22 @@ export default async function middleware(request: NextRequest) {
     req: request,
     secret: process.env.AUTH_SECRET,
     secureCookie: true,
+    cookieName:
+      process.env.NODE_ENV === "production"
+        ? "__Secure-next-auth.session-token"
+        : "next-auth.session-token",
   });
 
+  // Development-only logging for debugging session token
+  if (process.env.NODE_ENV !== "production") {
+    console.log(
+      "[Middleware] Session token cookie:",
+      request.cookies.get("next-auth.session-token"),
+    );
+    console.log("[Middleware] Decoded token:", token);
+  }
+  // console.log("Cookies:", request.cookies.getAll());
+  // console.log("AUTH_SECRET:", process.env.AUTH_SECRET);
   const isAuth = !!token;
 
   if (!isAuth) {
