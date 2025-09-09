@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.6.3 (September 8, 2025)
+
+### fix
+
+- fix(auth): align middleware cookie handling for Vercel production and add health check route ([0fe39c2](https://github.com/b3t0247/vdo-wrapper/commit/0fe39c2))
+
 ## 0.6.2 (August 26, 2025)
 
 ### fix
