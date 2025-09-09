@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getMessages } from "@/lib/getMessages";
 import LanguageSwitcher from "@/components/ui/language-switcher";
-import { ModeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { NextIntlClientProvider } from "next-intl";
 import NavBar from "@/components/NavBar";
 
@@ -56,7 +56,7 @@ export default async function LocaleLayout({
     >
       <header className="flex items-center justify-between border-b p-2">
         <LanguageSwitcher />
-        <ModeToggle />
+        <ThemeToggle />
       </header>
       <div className="flex items-center justify-center border-b p-1">
         <NavBar />
