@@ -1,14 +1,13 @@
 // src/app/[locale]/dashboard/page.tsx
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { getPushUrl, getViewUrl } from "@/lib/vdoConfig";
 import { useClipboard } from "@/lib/useClipboard";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-import { useLocale } from "next-intl";
 import { useTheme } from "next-themes";
 
 const screenshareOptions = [
@@ -16,7 +15,7 @@ const screenshareOptions = [
   "cleanoutput",
   "screensharequality=0",
 ];
-const webcamOptions = ["webcam", "cleanoutput"];
+const webcamOptions = ["webcam", "cleanoutput", "autostart&vd=video_device"];
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
@@ -29,7 +28,7 @@ export default function DashboardPage() {
   const forceLightMode = theme === "light"; // true = disable dark mode
 
   const [screenId, setScreenId] = useState("projector");
-  const [camera1Id, setcamera1Id] = useState("camera1");
+  const [cameraOneId, setCameraOneId] = useState("camera1");
 
   const [showQRCode, setShowQRCode] = useState(false);
   const [showWebcamQRCode, setShowWebcamQRCode] = useState(true);
@@ -38,12 +37,15 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const saved = localStorage.getItem("screenId");
+    const cameraOne = localStorage.getItem("cameraOneId");
     if (saved) setScreenId(saved);
+    if (cameraOne) setCameraOneId(cameraOne);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("screenId", screenId);
-  }, [screenId]);
+    localStorage.setItem("cameraOneId", cameraOneId);
+  }, [screenId, cameraOneId]);
 
   // Session guard
   if (status === "loading") {
@@ -65,7 +67,7 @@ export default function DashboardPage() {
     forceLightMode,
   );
   const guestWebcamLink = getPushUrl(
-    `${screenId}Cam`,
+    cameraOneId,
     webcamOptions,
     locale,
     forceLightMode,
@@ -77,7 +79,7 @@ export default function DashboardPage() {
     forceLightMode,
   );
   const obsWebcamLink = getViewUrl(
-    `${screenId}Cam`,
+    cameraOneId,
     webcamOptions,
     locale,
     forceLightMode,
@@ -134,7 +136,7 @@ export default function DashboardPage() {
                       "noopener,noreferrer",
                     )
                   }
-                  className="transiton rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                  className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
                 >
                   {t("guestScreenshare.share")}
                 </Button>
@@ -208,8 +210,8 @@ export default function DashboardPage() {
             </label>
             <input
               type="text"
-              value={camera1Id}
-              onChange={(e) => setcamera1Id(e.target.value)}
+              value={cameraOneId}
+              onChange={(e) => setCameraOneId(e.target.value)}
               className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
             />
           </div>
@@ -259,10 +261,10 @@ export default function DashboardPage() {
                 className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
               />
               <Button
-                onClick={() => copy("obsScreenshare", obsWebcamLink)}
+                onClick={() => copy("obsWebcam", obsWebcamLink)}
                 className="mt-1 rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
               >
-                {copiedKey === "obsScreenshare"
+                {copiedKey === "obsWebcam"
                   ? t("guestWebcam.copied")
                   : t("guestWebcam.copyObs")}
               </Button>
