@@ -10,6 +10,16 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.8.0 (September 9, 2025)
+
+### feat
+
+- feat(dashboard): add webcam share button and update i18n labels for en/es ([7028b0e](https://github.com/b3t0247/vdo-wrapper/commit/7028b0e))
+
+### refactor
+
+- refactor(dashboard): sync webcam ID logic with localStorage and fix clipboard key mismatch ([3d55b08](https://github.com/b3t0247/vdo-wrapper/commit/3d55b08))
+
 ## 0.7.0 (September 9, 2025)
 
 ### feat
