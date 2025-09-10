@@ -23,7 +23,8 @@
       "showQr": "Mostrar Código QR",
       "obsLink": "Enlace OBS de Cámara Web",
       "copyObs": "Copiar Enlace OBS",
-      "preview": "Vista Previa de Cámara Web"
+      "preview": "Vista Previa de Cámara Web",
+      "share": "Compartir Cámara"
     }
   }
 }

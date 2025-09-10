@@ -23,7 +23,8 @@
       "showQr": "Show QR Code",
       "obsLink": "OBS Webcam Link",
       "copyObs": "Copy OBS Link",
-      "preview": "Webcam Preview"
+      "preview": "Webcam Preview",
+      "share": "Share Camera"
     }
   }
 }

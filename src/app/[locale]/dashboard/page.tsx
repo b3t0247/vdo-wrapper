@@ -227,14 +227,28 @@ export default function DashboardPage() {
                 readOnly
                 className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
               />
-              <Button
-                onClick={() => copy("obsWebcam", guestWebcamLink)}
-                className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
-              >
-                {copiedKey === "obsWebcam"
-                  ? t("guestWebcam.copied")
-                  : t("guestWebcam.copy")}
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() =>
+                    window.open(
+                      guestWebcamLink,
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
+                  className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+                >
+                  {t("guestWebcam.share")}
+                </Button>
+                <Button
+                  onClick={() => copy("obsWebcam", guestWebcamLink)}
+                  className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+                >
+                  {copiedKey === "obsWebcam"
+                    ? t("guestWebcam.copied")
+                    : t("guestWebcam.copy")}
+                </Button>
+              </div>
 
               <div className="flex items-center gap-2">
                 <input
