@@ -10,6 +10,12 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.8.1 (September 9, 2025)
+
+### fix
+
+- fix(login): normalize username input to lowercase for consistent authentication ([18b8ebd](https://github.com/b3t0247/vdo-wrapper/commit/18b8ebd))
+
 ## 0.8.0 (September 9, 2025)
 
 ### feat
