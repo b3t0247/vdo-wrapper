@@ -10,6 +10,17 @@ The format is based on [Conventional Commits](https://www.conventionalcommits.or
 and this project uses [release-it](https://github.com/release-it/release-it)
 with dynamic linking powered by short hashes and commit URLs.
 
+## 0.7.0 (September 9, 2025)
+
+### feat
+
+- feat(vdo): add share button and sync theme with VDO darkmode ([3d5a007](https://github.com/b3t0247/vdo-wrapper/commit/3d5a007))
+
+### refactor
+
+- refactor(i18n): simplify LanguageSwitcher and enhance middleware with locale fallback ([d93548d](https://github.com/b3t0247/vdo-wrapper/commit/d93548d))
+- refactor(theme): rename and simplify ThemeToggle component with direct button toggle ([fb7b42c](https://github.com/b3t0247/vdo-wrapper/commit/fb7b42c))
+
 ## 0.6.3 (September 8, 2025)
 
 ### fix
