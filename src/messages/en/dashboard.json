@@ -11,7 +11,8 @@
       "showQr": "Show QR Code",
       "obsLink": "OBS Screenshare Link",
       "copyObs": "Copy OBS Link",
-      "preview": "Screenshare Preview"
+      "preview": "Screenshare Preview",
+      "share": "Share Screen"
     },
     "guestWebcam": {
       "title": "Guest Webcam",

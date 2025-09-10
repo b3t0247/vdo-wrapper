@@ -7,6 +7,9 @@ import { QRCodeCanvas } from "qrcode.react";
 import { getPushUrl, getViewUrl } from "@/lib/vdoConfig";
 import { useClipboard } from "@/lib/useClipboard";
 import { useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { useLocale } from "next-intl";
+import { useTheme } from "next-themes";
 
 const screenshareOptions = [
   "screenshare",
@@ -18,6 +21,12 @@ const webcamOptions = ["webcam", "cleanoutput"];
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const t = useTranslations("dashboard.dashboard");
+  const locale = useLocale();
+
+  // Access current theme from wrapper
+  const { theme } = useTheme();
+  // Convert theme to VDO-compatible darkMode flag
+  const forceLightMode = theme === "light"; // true = disable dark mode
 
   const [screenId, setScreenId] = useState("projector");
   const [camera1Id, setcamera1Id] = useState("camera1");
@@ -49,14 +58,34 @@ export default function DashboardPage() {
     );
   }
 
-  const guestScreenshareLink = getPushUrl(screenId, screenshareOptions);
-  const guestWebcamLink = getPushUrl(`${screenId}Cam`, webcamOptions);
-  const obsScreenshareLink = getViewUrl(screenId, screenshareOptions);
-  const obsWebcamLink = getViewUrl(`${screenId}Cam`, webcamOptions);
+  const guestScreenshareLink = getPushUrl(
+    screenId,
+    screenshareOptions,
+    locale,
+    forceLightMode,
+  );
+  const guestWebcamLink = getPushUrl(
+    `${screenId}Cam`,
+    webcamOptions,
+    locale,
+    forceLightMode,
+  );
+  const obsScreenshareLink = getViewUrl(
+    screenId,
+    screenshareOptions,
+    locale,
+    forceLightMode,
+  );
+  const obsWebcamLink = getViewUrl(
+    `${screenId}Cam`,
+    webcamOptions,
+    locale,
+    forceLightMode,
+  );
 
   return (
     <main className="p-6">
-      <div>Dashboard loaded</div>
+      {/* <div>Dashboard loaded</div> */}
       <div>
         <h1 className="pb-4 font-medium text-green-600">
           {t("greeting")}, {session?.user?.name}!
@@ -96,14 +125,28 @@ export default function DashboardPage() {
                 readOnly
                 className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
               />
-              <button
-                onClick={() => copy("guestScreenshare", guestScreenshareLink)}
-                className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
-              >
-                {copiedKey === "guestScreenshare"
-                  ? t("guestScreenshare.copied")
-                  : t("guestScreenshare.copy")}
-              </button>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() =>
+                    window.open(
+                      guestScreenshareLink,
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
+                  className="transiton rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                >
+                  {t("guestScreenshare.share")}
+                </Button>
+                <Button
+                  onClick={() => copy("guestScreenshare", guestScreenshareLink)}
+                  className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+                >
+                  {copiedKey === "guestScreenshare"
+                    ? t("guestScreenshare.copied")
+                    : t("guestScreenshare.copy")}
+                </Button>
+              </div>
 
               <div className="flex items-center gap-2">
                 <input
@@ -129,14 +172,14 @@ export default function DashboardPage() {
                 readOnly
                 className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
               />
-              <button
+              <Button
                 onClick={() => copy("obsScreenshare", obsScreenshareLink)}
                 className="mt-1 rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
               >
                 {copiedKey === "obsScreenshare"
                   ? t("guestScreenshare.copied")
                   : t("guestScreenshare.copyObs")}
-              </button>
+              </Button>
             </div>
 
             <div className="flex-1">
@@ -182,14 +225,14 @@ export default function DashboardPage() {
                 readOnly
                 className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
               />
-              <button
+              <Button
                 onClick={() => copy("obsWebcam", guestWebcamLink)}
                 className="rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
               >
                 {copiedKey === "obsWebcam"
                   ? t("guestWebcam.copied")
                   : t("guestWebcam.copy")}
-              </button>
+              </Button>
 
               <div className="flex items-center gap-2">
                 <input
@@ -215,14 +258,14 @@ export default function DashboardPage() {
                 readOnly
                 className="border-border bg-input text-foreground w-full rounded border px-4 py-2"
               />
-              <button
+              <Button
                 onClick={() => copy("obsScreenshare", obsWebcamLink)}
                 className="mt-1 rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
               >
                 {copiedKey === "obsScreenshare"
                   ? t("guestWebcam.copied")
                   : t("guestWebcam.copyObs")}
-              </button>
+              </Button>
             </div>
 
             <div className="flex-1">

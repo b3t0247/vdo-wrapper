@@ -9,9 +9,10 @@
       "copy": "Copiar Enlace",
       "copied": "¡Copiado!",
       "showQr": "Mostrar Código QR",
-      "obsLink": "Enlace OBS para Compartir Pantalla",
-      "copyObs": "Copiar Enlace OBS",
-      "preview": "Vista Previa de Pantalla"
+      "obsLink": "Enlace de OBS para Compartir Pantalla",
+      "copyObs": "Copiar Enlace de OBS",
+      "preview": "Previsualización de Pantalla Compartida",
+      "share": "Compartir Pantalla"
     },
     "guestWebcam": {
       "title": "Cámara Web del Invitado",
